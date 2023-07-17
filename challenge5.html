@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>challenge 5</title>
+</head>
+<body>
+    <h1>Challenge 5</h1>
+    <script>function calculateSpotlightSum(grid) {
+        const rows = grid.length;
+        const cols = grid[0].length;
+        const spotlightGrid = [];
+      
+        // Iterate over each cell in the grid
+        for (let i = 0; i < rows; i++) {
+          const row = [];
+          for (let j = 0; j < cols; j++) {
+            let sum = 0;
+      
+            // Calculate the sum of the current cell and its adjacent cells
+            for (let dx = -1; dx <= 1; dx++) {
+              for (let dy = -1; dy <= 1; dy++) {
+                const newRow = i + dx;
+                const newCol = j + dy;
+      
+                // Check if the adjacent cell is within the grid bounds
+                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+                  sum += grid[newRow][newCol];
+                }
+              }
+            }
+      
+            row.push(sum);
+          }
+          spotlightGrid.push(row);
+        }
+      
+        return spotlightGrid;
+      }
+      const grid = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+const spotlightGrid = calculateSpotlightSum(grid);
+console.log(grid);
+console.log(spotlightGrid);
+
+      </script>
+</body>
+</html>
